@@ -31,6 +31,8 @@ The downloaded data includes:
 
 Please make sure that you construct the source code & dataset directories structure as below.
 
+you should change the kitti/ImageSets/*.txt for your own dataset index(I used only 4788 datas)
+
 ### 2.3. How to run
 
 #### 2.3.0 converting AIHub dataset to kitti dataset format
