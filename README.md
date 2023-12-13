@@ -1,32 +1,13 @@
-# Super Fast and Accurate 3D Object Detection based on 3D LiDAR Point Clouds (SFA3D)
+# Super Fast and Accurate 3D Object Detection based on 3D LiDAR Point Clouds (SFA3D) 
+
+ADD Aihub data processing version!! It is 'Not' my own project
+[Original Code link](https://github.com/maudzung/SFA3D/tree/master)
+[Used dataset link](https://www.aihub.or.kr/aihubdata/data/view.do?dataSetSn=629)
 
 [![python-image]][python-url]
 [![pytorch-image]][pytorch-url]
 
 ---
-
-## Features
-- [x] Super fast and accurate 3D object detection based on LiDAR
-- [x] Fast training, fast inference
-- [x] An Anchor-free approach
-- [x] No Non-Max-Suppression
-- [x] Support [distributed data parallel training](https://github.com/pytorch/examples/tree/master/distributed/ddp)
-- [x] Release pre-trained models 
-
-## Highlights
-- [x] The technical details are described **[here](./Technical_details.md)**
-- [x] The great introduction and explanation from _`Computer Vision and Perception for Self-Driving Cars Course`_ **[Youtube link](https://youtu.be/cPOtULagNnI?t=4858)**
-- [x] SFA3D is used for the second course in the _`Udacity Self-Driving Car Engineer Nanodegree Program: Sensor Fusion and Tracking`_ **[GitHub link](https://github.com/udacity/nd013-c2-fusion-starter/tree/b1455b8ff433cb7f537d62e526209738293e7d8b)**
-
-**Update 2020.09.06**: Add `ROS` source code. The great work has been done by [@AhmedARadwan](https://github.com/AhmedARadwan). 
-The implementation is [here](https://github.com/maudzung/SFA3D/tree/ea0222c1b35489dc35d8452c989c4b014e20e0da)
-
-## Demonstration (on a single GTX 1080Ti)
-
-[![demo](http://img.youtube.com/vi/FI8mJIXkgX4/0.jpg)](http://www.youtube.com/watch?v=FI8mJIXkgX4)
-
-
-**[Youtube link](https://youtu.be/FI8mJIXkgX4)**
 
 ## 2. Getting Started
 ### 2.1. Requirement
@@ -40,19 +21,32 @@ pip install -r requirements.txt
 ```
 
 ### 2.2. Data Preparation
-Download the 3D KITTI detection dataset from [here](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d).
+Download the AIHub dataset from [here](https://www.aihub.or.kr/aihubdata/data/view.do?dataSetSn=629)
 
 The downloaded data includes:
 
-- Velodyne point clouds _**(29 GB)**_
-- Training labels of object data set _**(5 MB)**_
-- Camera calibration matrices of object data set _**(16 MB)**_
-- **Left color images** of object data set _**(12 GB)**_ (For visualization purpose only)
+(Training)원천데이터 + 라벨링데이터
 
+(Testing)원천데이터 / if you need. this code only using Training data for simple implementation.
 
 Please make sure that you construct the source code & dataset directories structure as below.
 
 ### 2.3. How to run
+
+#### 2.3.0 converting AIHub dataset to kitti dataset format
+
+To convert AIHub data to KITTI data format
+
+Warning : you should check your data root and change the directory!!
+this code is not supporting for linking directory.
+
+```shell script
+cd sfa/data_process/
+python data_processing.py
+```
+
+then the AIHub dataset is converted to KITTI dataset format
+
 
 #### 2.3.1. Visualize the dataset 
 
@@ -62,7 +56,6 @@ To visualize 3D point clouds with 3D boxes, let's execute:
 cd sfa/data_process/
 python kitti_dataset.py
 ```
-
 
 #### 2.3.2. Inference
 
@@ -107,48 +100,6 @@ python train.py --multiprocessing-distributed --world-size 1 --rank 0 --batch_si
     ```
     python train.py --dist-url 'tcp://IP_OF_NODE2:FREEPORT' --multiprocessing-distributed --world-size 2 --rank 1 --batch_size 64 --num_workers 8
     ```
-
-#### Tensorboard
-
-- To track the training progress, go to the `logs/` folder and 
-
-```shell script
-cd logs/<saved_fn>/tensorboard/
-tensorboard --logdir=./
-```
-
-- Then go to [http://localhost:6006/](http://localhost:6006/)
-
-
-## Contact
-
-If you think this work is useful, please give me a star! <br>
-If you find any errors or have any suggestions, please contact me (**Email:** `nguyenmaudung93.kstn@gmail.com`). <br>
-Thank you!
-
-
-## Citation
-
-```bash
-@misc{Super-Fast-Accurate-3D-Object-Detection-PyTorch,
-  author =       {Nguyen Mau Dung},
-  title =        {{Super-Fast-Accurate-3D-Object-Detection-PyTorch}},
-  howpublished = {\url{https://github.com/maudzung/Super-Fast-Accurate-3D-Object-Detection}},
-  year =         {2020}
-}
-```
-
-## References
-
-[1] CenterNet: [Objects as Points paper](https://arxiv.org/abs/1904.07850), [PyTorch Implementation](https://github.com/xingyizhou/CenterNet) <br>
-[2] RTM3D: [PyTorch Implementation](https://github.com/maudzung/RTM3D) <br>
-[3] Libra_R-CNN: [PyTorch Implementation](https://github.com/OceanPang/Libra_R-CNN)
-
-_The YOLO-based models with the same BEV maps input:_ <br>
-[4] Complex-YOLO: [v4](https://github.com/maudzung/Complex-YOLOv4-Pytorch), [v3](https://github.com/ghimiredhikura/Complex-YOLOv3), [v2](https://github.com/AI-liu/Complex-YOLO)
-
-*3D LiDAR Point pre-processing:* <br>
-[5] VoxelNet: [PyTorch Implementation](https://github.com/skyhehe123/VoxelNet-pytorch)
 
 ## Folder structure
 
