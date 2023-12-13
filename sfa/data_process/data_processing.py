@@ -3,7 +3,7 @@ import shutil
 import json
 import numpy
 
-root = '../datasets/084.강건한(Robust) 융합 센서 객체 인식 자율주행 데이터/01.데이터/1.Training/'
+root = '../../dataset/084.강건한(Robust) 융합 센서 객체 인식 자율주행 데이터/01.데이터/1.Training/'
 source_dir = '원천데이터/'
 label_dir = '라벨링데이터/'
 save_dir = 'NEW_DATASET/training/'
