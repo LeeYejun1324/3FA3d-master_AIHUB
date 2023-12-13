@@ -76,6 +76,8 @@ The data for the demonstration will be automatically downloaded by executing the
 
 #### 2.3.4. Training
 
+Warning : If you need pretrained weight, go to original code for download that.
+
 ##### 2.3.4.1. Single machine, single gpu
 
 ```shell script
