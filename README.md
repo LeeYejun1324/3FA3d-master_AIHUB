@@ -1,4 +1,4 @@
-# Super Fast and Accurate 3D Object Detection based on 3D LiDAR Point Clouds (SFA3D) 
+# Super Fast and Accurate 3D Object Detection based on 3D LiDAR Point Clouds (SFA3D-AIHub)
 
 ADD Aihub data processing version!! It is 'Not' my own project
 [Original Code link](https://github.com/maudzung/SFA3D/tree/master)
